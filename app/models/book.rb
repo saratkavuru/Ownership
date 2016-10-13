@@ -1,5 +1,5 @@
 class Book < ApplicationRecord
-  has_many :checkout
+  has_many :checkouts
 
   def to_s
     return self.name

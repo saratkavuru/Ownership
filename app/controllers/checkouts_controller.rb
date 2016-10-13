@@ -1,5 +1,5 @@
 class CheckoutsController < ApplicationController
-before_action :authenticate_user!
+  before_action :authenticate_user!
   def new
     @checkout=Checkout.new
   end
@@ -22,6 +22,6 @@ before_action :authenticate_user!
   end
 
 def checkout_params
-  params.require(:checkout).permit(:user, :room, :start_time)
+  params.require(:checkout).permit(:user_id, :book_id, :start_time)
 end
 end
