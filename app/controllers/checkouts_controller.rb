@@ -17,7 +17,7 @@ class CheckoutsController < ApplicationController
   end
   def destroy
     @checkout.destroy
-    flash[:notice]='Checkout was successfully deleted. Admin will review the request.'
+    flash.now[:notice]='Checkout was successfully deleted. Admin will review the request.'
     redirect to '/'
   end
 

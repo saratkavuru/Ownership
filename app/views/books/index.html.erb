@@ -21,7 +21,10 @@
         <td><%= book.author %></td>
         <td><%= book.ISBN %></td>
         <td><%= book.Description %></td>
-        <td><%= book.status %></td>
+        <%if book.status %>
+            <td> <p style="color:green">Available</p></td>
+            <%else%> <td> <p style="color:red">Not Available</p></td>
+            <%end%>
         <td><%= link_to 'Show', book %></td>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,0 +1,30 @@
+<h2>New Checkout</h2>
+<%= form_for(@checkout)  do |f| %>
+    <%= f.label :Book %>
+    <%= f.collection_select(:book_id, Book.all, :id, :to_s,prompt: true) %>
+
+    <div class="field">
+      <%= f.label :start_time %><br>
+      <%= f.datetime_local_field :start_time %>
+    </div>
+
+    <div class="field" style="display: none;">
+      <br>
+      <input type="number" name="checkout[user_id]" value="<%= current_user.id %>">
+      <%= current_user.id %> </input>
+    </div>
+
+
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+
+<% end %>
+
+<!-- SCRIPT T ENABLE DROPDOWN -->
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>
