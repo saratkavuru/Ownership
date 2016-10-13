@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :books
   rolify
   after_create :assign_default_role
 
