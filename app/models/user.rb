@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :checkouts
+  has_many :Checkout
   rolify
 
   after_create :assign_default_role

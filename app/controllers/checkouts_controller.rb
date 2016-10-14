@@ -20,7 +20,8 @@ class CheckoutsController < ApplicationController
     flash.now[:notice]='Checkout was successfully deleted. Admin will review the request.'
     redirect to '/'
   end
-
+def history
+end
 def checkout_params
   params.require(:checkout).permit(:user_id, :book_id, :start_time)
 end

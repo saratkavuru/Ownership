@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :checkouts
   get "checkout_new" => "checkouts#new", as: "checkout_new"
   resources :books
+  get "checkout_history" => "checkouts#history", as: "checkout_history"
 end

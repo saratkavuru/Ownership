@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
- rescue_from Exception do |exception|
-    redirect_to :root, :notice => exception.message
-  end
+ #rescue_from Exception do |exception|
+  #  redirect_to :root, :notice => exception.message
+  #end
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
   protected
