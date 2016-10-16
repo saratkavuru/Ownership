@@ -1,0 +1,9 @@
+Greetings, <%= @user.name %>
+===============================================
+
+You have successfully checked out the book  <%= @user.Checkout.last.book.to_s %> by the Author <%= @user.Checkout.last.book.author %>
+at the time <%=l @user.Checkout.last.start_time %>. The book is due at <%=l @user.Checkout.last.start_time+7.days %> .
+
+To login to the site, just follow this link: <%= @url %>.
+
+Have a great day!

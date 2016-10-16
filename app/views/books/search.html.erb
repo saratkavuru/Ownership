@@ -1,0 +1,10 @@
+<h3>Search books either by their Name or Author or Isbn or Description or Status</h3>
+<%= form_for :book do |f| %>
+    <p>
+      <%= f.label :Search %>
+      <%= f.text_field :search_string %>
+      <%= f.check_box(:status) %>
+      <%= f.label(:status, "Available") %>
+      <%= f.submit "Search"%>
+    </p>
+<% end %>
