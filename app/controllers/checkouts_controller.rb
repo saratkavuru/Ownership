@@ -13,7 +13,6 @@ class CheckoutsController < ApplicationController
        @checkout.save
     session[:checkout_id] = @checkout.id
     flash[:notice]='Book was successfully checked out. Admin will review the request.'
-    UserMailer.checkout_email(@checkout.user).deliver_now
     redirect_to ("/books")
   end
   def destroy

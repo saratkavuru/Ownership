@@ -23,11 +23,13 @@
         <td><%= book.Description %></td>
         <%if book.status == 'Available' %>
             <td> <p style="color:green">Available</p></td>
+            <td>
+              <%= form_tag book_issue_path(book), :method=>'post' do %>
+                  <%= submit_tag "Check Out" %>
+              <% end %>
+            </td>
             <%else%> <td> <p style="color:red">Not Available</p></td>
             <%end%>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -35,4 +37,3 @@
 
 <br>
 
-<%= link_to 'New Book', new_book_path %>

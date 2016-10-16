@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :checkouts
   get "checkout_new" => "checkouts#new", as: "checkout_new"
   resources :books
+  post 'books/:id/issue' => 'books#issue', :as => 'book_issue'
   get "checkout_history" => "checkouts#history", as: "checkout_history"
   get "book_search" => "books#search", as: "book_search"
   post "book_search" => "books#search_results", as: "book_search_results"

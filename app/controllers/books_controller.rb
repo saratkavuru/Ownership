@@ -87,6 +87,17 @@ end
     end
   end
 
+def issue
+  @book = Book.find(params[:id])
+  @user = current_user
+  bookid = @book[:id]
+
+  @checkout= Checkout.create(user_id: @user[:id], book_id: bookid, start_time: DateTime.current())
+  @book.update(:status => "Booked")
+  flash[:notice]='Book was successfully checked out. Admin will review the request.'
+  redirect_to '/'
+end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book
