@@ -1,0 +1,40 @@
+<p> Welcome  <%= current_user.name %>!</p>
+
+<h4> History </h4>
+<% if current_user.Checkout.all.length==0 %>
+    <p> No Checkouts yet! </p>
+<% else %>
+    <table>
+      <thead>
+      <td> BOOK NAME </td>
+      <td> AUTHOR</td>
+      <td> ISBN</td>
+      <td> CHECKOUT TIME </td>
+      <td> STATUS </td>
+      </thead>
+
+      <% current_user.Checkout.all.each do |checkout| %>
+          <tr>
+            <td> <%= checkout.book.name %> </td>
+            <td> <%= checkout.book.author %> </td>
+            <td> <%= checkout.book.ISBN %> </td>
+            <td> <%= checkout.start_time + 2.hours %> </td>
+            <% if checkout.start_time > DateTime.now - 2.hours %>
+                <td><a class="waves-effect waves-light btn" onClick="delete_checkout(<%= checkout.id %>)"> Delete</a></td>
+            <% end %>
+          </tr>
+      <% end %>
+<%end%>
+</table>
+
+<script type="text/javascript">
+  function delete_checkout(checkout_id) {
+    $.ajax({
+      url: '/checkout/' + checkout_id,
+      type: 'DELETE',
+      success: function(result) {
+        // location.reload(true);
+      }
+    });
+  }
+</script>
