@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   get "checkout_new" => "checkouts#new", as: "checkout_new"
   resources :books
   get "checkout_history" => "checkouts#history", as: "checkout_history"
+  get "book_search" => "books#search", as: "book_search"
+  post "book_search" => "books#search_results", as: "book_search_results"
 end

@@ -26,7 +26,6 @@ class BooksController < ApplicationController
   # POST /books.json
   def create
     @book = Book.new(book_params)
-    @book.status=true
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
@@ -52,6 +51,32 @@ class BooksController < ApplicationController
     end
   end
 
+def search_results
+  search_string = params[:book ][:search_string]
+  if params[:book][:status]=="1"
+    status = "Available"
+  else
+    status="Booked"
+  end
+  if(status)
+    @books = Book.find_by_sql("Select * from books where (lower(name) LIKE lower('%#{search_string}%')
+                                  OR lower(author) LIKE lower('%#{search_string}%')
+                                  OR lower(isbn) LIKE lower('%#{search_string}%')
+                                  OR lower(description) LIKE lower('%#{search_string}%'))
+                                  AND status='#{status}'
+                                  ")
+  else
+    @books = Book.find_by_sql("Select * from books where lower(name) LIKE lower('%#{search_string}%')
+                                  OR lower(author) LIKE lower('%#{search_string}%')
+                                  OR lower(isbn) LIKE lower('%#{search_string}%')
+                                  OR lower(description) LIKE lower('%#{search_string}%')
+                                  ")
+  end
+
+end
+
+  def search
+  end
   # DELETE /books/1
   # DELETE /books/1.json
   def destroy

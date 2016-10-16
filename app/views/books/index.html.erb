@@ -21,7 +21,7 @@
         <td><%= book.author %></td>
         <td><%= book.ISBN %></td>
         <td><%= book.Description %></td>
-        <%if book.status %>
+        <%if book.status == 'Available' %>
             <td> <p style="color:green">Available</p></td>
             <%else%> <td> <p style="color:red">Not Available</p></td>
             <%end%>
