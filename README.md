@@ -22,3 +22,4 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+<a href="https://codeclimate.com/github/saratkavuru/Ownership"><img src="https://codeclimate.com/github/saratkavuru/Ownership/badges/gpa.svg" /></a>
