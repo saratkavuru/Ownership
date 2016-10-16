@@ -11,6 +11,7 @@
       <td> ISBN</td>
       <td> CHECKOUT TIME </td>
       <td> STATUS </td>
+      <td> ACTIVITY </td>
       </thead>
 
       <% current_user.Checkout.all.each do |checkout| %>
@@ -19,8 +20,16 @@
             <td> <%= checkout.book.author %> </td>
             <td> <%= checkout.book.ISBN %> </td>
             <td> <%=l checkout.start_time + 2.hours %> </td>
-            <% if checkout.start_time > DateTime.now - 2.hours %>
-                <td><a class="waves-effect waves-light btn" onClick="delete_checkout(<%= checkout.id %>)"> Delete</a></td>
+            <% if checkout.status == "Active" %>
+            <td> <p style="color:green"><%= checkout.status %></p></td>
+             <%else%>  <td><%=checkout.status %></td>
+                <%end%>
+            <% if checkout.status == "Active" %>
+                <td>
+                  <%= form_tag checkout_return_path(checkout), :method=>'post' do %>
+                      <%= submit_tag "Return" %>
+                  <% end %>
+                </td>
             <% end %>
           </tr>
       <% end %>

@@ -21,7 +21,16 @@ class CheckoutsController < ApplicationController
     redirect to '/'
   end
 def history
+
 end
+
+  def return
+    @checkout = Checkout.find(params[:id])
+    @checkout.update(:status => "Archive ")
+    # bookid = @checkoutid.book_id
+    @checkout.book.update(:status => "Available")
+    redirect_to '/'
+  end
 def checkout_params
   params.require(:checkout).permit(:user_id, :book_id, :start_time)
 end
