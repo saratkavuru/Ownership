@@ -8,8 +8,9 @@ before_action :authenticate_user!
     an.book = @book
     if an.save
       flash[:notice] = "Registered for notification for #{an.book.name}."
-      redirect_to root_path
+    else flash[:notice] = "Already Registered for notification for #{an.book.name}."
     end
+    redirect_to root_path
   end
 
 end

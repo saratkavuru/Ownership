@@ -32,7 +32,7 @@ end
     @checkout.update(:status => "Archive ")
     @checkout.book.update(:status => "Available")
    # @checkout.book.availability_notifications.users.each do |user|
-    users = @checkout.book.availability_notifications.map {|reg| reg.user}.uniq
+    users = @checkout.book.availability_notifications.map {|reg| reg.user.email}.uniq
     users.each do |user|
     UserMailer.book_available_email(user, @checkout.book).deliver_now
     end

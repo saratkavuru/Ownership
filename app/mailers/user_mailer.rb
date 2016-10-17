@@ -12,9 +12,9 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: 'Book Checkout Notification')
   end
   def book_available_email(user,book)
-    @user=user
+    @user = user
     @book=book
     @url  = 'https://frontdesk517oodd.herokuapp.com'
-    mail(to: @user.email, subject: 'Book Available Notification')
+    mail(to: user, subject: 'Book Available Notification')
   end
 end
