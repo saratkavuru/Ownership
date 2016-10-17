@@ -10,10 +10,13 @@ class CheckoutsController < ApplicationController
   end
   def create
     @checkout=Checkout.new(checkout_params)
-       @checkout.save
+      if @checkout.save
     session[:checkout_id] = @checkout.id
     flash[:notice]='Book was successfully checked out. Admin will review the request.'
-    redirect_to ("/books")
+    redirect_to ("/")
+        else flash[:notice]='Book could not be checked out.'
+        redirect_to ("/")
+        end
   end
   def destroy
     @checkout.destroy

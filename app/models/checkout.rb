@@ -2,6 +2,7 @@ class Checkout < ApplicationRecord
   belongs_to :user
   belongs_to :book
   after_create :send_checkout_email,:change_checkout_status,:checkout_possible?,:change_book_status
+  validates :book,:user,:start_time ,presence:true
 def change_book_status
   self.book.update_attribute(:status, :Booked)
 end

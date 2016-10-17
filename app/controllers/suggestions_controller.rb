@@ -27,6 +27,7 @@ class SuggestionsController < ApplicationController
       redirect_to '/'
       else
        flash[:notice]="Suggestion could not be created"
+       redirect_to '/'
       end
     end
 
