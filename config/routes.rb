@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: redirect('/books')
+resources :suggestions
+  get "suggestions/new" => "suggestions#new", as: "suggestions/new"
+
+
   resources :checkouts
   get "checkout_new" => "checkouts#new", as: "checkout_new"
   post 'checkouts/:id/return' => 'checkouts#return', :as => 'checkout_return'
