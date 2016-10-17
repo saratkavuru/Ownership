@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161017013208) do
+ActiveRecord::Schema.define(version: 20161017024452) do
+
+  create_table "availability_notifications", force: :cascade do |t|
+    t.integer  "book_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_availability_notifications_on_book_id"
+    t.index ["user_id"], name: "index_availability_notifications_on_user_id"
+  end
 
   create_table "books", force: :cascade do |t|
     t.string   "name"

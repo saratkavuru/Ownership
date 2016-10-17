@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :Checkout
+  has_many :availability_notifications
   rolify
 
   after_create :assign_default_role, :send_welcome_email

@@ -29,6 +29,12 @@
               <% end %>
             </td>
             <%else%> <td> <p style="color:red">Not Available</p></td>
+            <td>
+              <%= form_tag  availability_notifications_path, :method=>'post' do %>
+                  <%= hidden_field_tag :book_id, book.id %>
+                  <%= submit_tag "Get Notified" %>
+              <% end %>
+            </td>
             <%end%>
       </tr>
     <% end %>

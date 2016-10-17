@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   root to: redirect('/books')
 resources :suggestions
   get "suggestions/new" => "suggestions#new", as: "suggestions/new"
-
-
+  resources :availability_notifications
   resources :checkouts
   get "checkout_new" => "checkouts#new", as: "checkout_new"
   post 'checkouts/:id/return' => 'checkouts#return', :as => 'checkout_return'

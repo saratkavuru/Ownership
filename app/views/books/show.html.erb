@@ -1,25 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @book.name %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-  <%= @book.author %>
-</p>
-
-<p>
-  <strong>Isbn:</strong>
-  <%= @book.ISBN %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @book.Description %>
-</p>
-
-
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+<h3>
+  <%= @book.name%> , <%= @book.author%>, Current Status : <%= @book.status %>
+</h3>
+<div class="container">
+  <table>
+    <thead>
+    <th> User </th>
+    <th> Checkout Time</th>
+    </thead>
+    <% @book.checkouts.order(start_time: :desc).each do |checkout| %>
+        <tr>
+          <td> <%= checkout.user.name %></td>
+          <td> <%=l checkout.start_time %></td>
+        </tr>
+    <% end %>
+  </table>
+</div>
+<br>

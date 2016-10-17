@@ -1,5 +1,6 @@
 class Book < ApplicationRecord
   has_many :checkouts
+  has_many :availability_notifications
   before_create :default_status
 
   def available?

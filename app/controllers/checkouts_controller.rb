@@ -27,10 +27,14 @@ end
   def return
     @checkout = Checkout.find(params[:id])
     @checkout.update(:status => "Archive ")
-    # bookid = @checkoutid.book_id
     @checkout.book.update(:status => "Available")
+   # @checkout.book.availability_notifications.users.each do |user|
+    users = @checkout.book.availability_notifications.map {|reg| reg.user}.uniq
+    users.each do |user|
+    UserMailer.book_available_email(user, @checkout.book).deliver_now
     redirect_to '/'
-  end
+    end
+    end
 def checkout_params
   params.require(:checkout).permit(:user_id, :book_id, :start_time)
 end
