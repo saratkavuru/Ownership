@@ -35,8 +35,8 @@ end
     users = @checkout.book.availability_notifications.map {|reg| reg.user}.uniq
     users.each do |user|
     UserMailer.book_available_email(user, @checkout.book).deliver_now
-    redirect_to '/'
     end
+    redirect_to '/'
     end
 def checkout_params
   params.require(:checkout).permit(:user_id, :book_id, :start_time)

@@ -1,8 +1,9 @@
 class User < ApplicationRecord
-  has_many :Checkout
-  has_many :availability_notifications
-  validates :name,:email,:password , presence: true
   rolify
+  has_many :Checkout,:dependent => :destroy
+  has_many :availability_notifications,:dependent => :delete_all
+  validates :name,:email,:password , presence: true
+
 
   after_create :assign_default_role, :send_welcome_email
 
