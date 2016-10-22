@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161017024452) do
+ActiveRecord::Schema.define(version: 20161022054636) do
 
   create_table "availability_notifications", force: :cascade do |t|
     t.integer  "book_id"
@@ -42,6 +42,12 @@ ActiveRecord::Schema.define(version: 20161017024452) do
     t.index ["user_id"], name: "index_checkouts_on_user_id"
   end
 
+  create_table "libraries", force: :cascade do |t|
+    t.integer  "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.string   "resource_type"
@@ -50,6 +56,15 @@ ActiveRecord::Schema.define(version: 20161017024452) do
     t.datetime "updated_at"
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["name"], name: "index_roles_on_name"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.integer  "room_number"
+    t.integer  "capacity"
+    t.integer  "library_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["library_id"], name: "index_rooms_on_library_id"
   end
 
   create_table "suggestions", force: :cascade do |t|

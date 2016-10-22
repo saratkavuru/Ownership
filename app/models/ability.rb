@@ -36,11 +36,16 @@ class Ability
         can :access, :rails_admin   # grant access to rails_admin
         can :manage, :all
         can :dashboard
+        cannot :destroy, Role
+        cannot :update, Role
       else
         # Allow super admins to wreck havoc!
         can :access, :rails_admin   # grant access to rails_admin
         can :manage, :all
         can :dashboard
+        cannot :create , Role
+        cannot :destroy, Role
+        cannot :update, Role
       end
   end
 end
