@@ -60,6 +60,3 @@ gem 'rolify'
 gem 'rails_admin', '~> 1.0'
 # Materialize UI
 gem 'materialize-sass'
-
-gem 'private_pub'
-gem 'thin'

@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>MINE</title>
-  <meta content='<%= user_signed_in? ? current_user.id : "" %>' name='user-id'/>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.css">
@@ -36,9 +35,6 @@
       </ul>
       <ul class="nav navbar-nav">
         <li class="active"><a href="/suggestions/new">Suggestion</a></li>
-      </ul>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="/conversations">Chat</a></li>
       </ul>
       <p class="navbar-text pull-right">
         <% if user_signed_in? %>
