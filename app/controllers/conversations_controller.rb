@@ -24,12 +24,13 @@ class ConversationsController < ApplicationController
     @conversations = Conversation.involving(current_user).order("created_at DESC")
   end
 
+  def interlocutor(conversation)
+    current_user == conversation.recipient ? conversation.sender : conversation.recipient
+  end
+
   private
   def conversation_params
     params.permit(:sender_id, :recipient_id)
   end
 
-  def interlocutor(conversation)
-    current_user == conversation.recipient ? conversation.sender : conversation.recipient
-  end
 end
